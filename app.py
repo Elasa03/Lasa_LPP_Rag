@@ -77,7 +77,7 @@ with st.sidebar:
     st.session_state.top_k = top_k
     
     # TO DO: Model selection dropdown menu
-    model_choice = st.selectbox("LLM model", value = config.AVAILABLE_MODELS, index = 0)
+    model_choice = st.selectbox("LLM model", config.AVAILABLE_MODELS, index = 0)
     
     # TO DO: Create max_iter slider
     # Max iterations for tool calls
