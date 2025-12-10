@@ -168,7 +168,7 @@ for message in st.session_state.messages:
 if prompt := st.chat_input("Ask a question about TOPIC..."):
     
     # TO DO: Add user message to history
-    st.session_state.messages.append({"Role": "user", "content": prompt})
+    st.session_state.messages.append({"role": "user", "content": prompt})
     
     # TO DO: Display user message
     with st.chat_message("user"):
