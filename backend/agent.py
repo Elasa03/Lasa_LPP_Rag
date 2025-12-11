@@ -12,9 +12,9 @@ from config import DEFAULT_MAX_ITER, EMBEDDING_MODEL_NAME, DEFAULT_DB_PATH
 
 class RAGAgent:
     def __init__(self, db: RAGDatabase, model_name: str, max_iter: int):
-        self.db = db,
-        self.model_name = model_name,
-        self.max_iter = max_iter,
+        self.db = db
+        self.model_name = model_name
+        self.max_iter = max_iter
         self.last_sources = []  # We'll store retrieved passages here for the UI
 
     def create_tool(self):
