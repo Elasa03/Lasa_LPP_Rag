@@ -180,8 +180,8 @@ if prompt := st.chat_input("Ask a question about TOPIC..."):
             try:
                 # TO DO: Initialize Agent
                 agent = RAGAgent(db = st.session_state.database,
-                                 max_iter = DEFAULT_MAX_ITER,
-                                 model_name = EMBEDDING_MODEL_NAME)
+                                 max_iter = config.DEFAULT_MAX_ITER,
+                                 model_name = config.EMBEDDING_MODEL_NAME)
                 
                 # Get answer
                 result = agent.ask(prompt)
