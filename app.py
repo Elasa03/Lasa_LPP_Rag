@@ -22,6 +22,66 @@ st.set_page_config(
     page_icon="📖",
     layout="wide"
 )
+# ---- Custom styling (WWI theme) ----
+st.markdown("""
+    <style>
+    /* Main page background */
+    .main {
+        background: radial-gradient(circle at top left, #3b4a5a 0, #111827 45%, #05070a 100%);
+        color: #f9fafb;
+    }
+    
+    /* Sidebar background */
+    section[data-testid="stSidebar"] {
+        background: #111827;
+        border-right: 1px solid #374151;
+    }
+
+    /* Sidebar text */
+    section[data-testid="stSidebar"] * {
+        color: #e5e7eb !important;
+    }
+
+    /* App title */
+    h1, h2, h3 {
+        color: #e5e7eb !important;
+        font-family: "Georgia", "Times New Roman", serif;
+    }
+
+    /* Chat messages: user & assistant containers */
+    div[data-testid="stChatMessage"] {
+        border-radius: 12px;
+        padding: 0.5rem 0.75rem;
+        margin-bottom: 0.6rem;
+        border: 1px solid #374151;
+        background-color: rgba(15, 23, 42, 0.8);
+    }
+
+    /* Text areas in sources */
+    textarea {
+        background-color: #020617 !important;
+        color: #e5e7eb !important;
+        border-radius: 6px !important;
+    }
+
+    /* Expander styling */
+    details > summary {
+        font-weight: 600;
+        color: #e5e7eb !important;
+    }
+
+    /* Buttons */
+    button[kind="secondary"] {
+        border-radius: 999px !important;
+    }
+
+    /* Link color */
+    a {
+        color: #93c5fd !important;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
 
 # -----------------------------------------------------------------------------
 # Session State Initialization
