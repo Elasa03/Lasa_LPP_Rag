@@ -139,34 +139,59 @@ os.environ["OPENAI_API_KEY"] = api_key
 # -----------------------------------------------------------------------------
 # Loop through all previous messages and display them
 for message in st.session_state.messages:
-    # -----------------------------------------------------------------------------
-# Helper: handle a question (user or example)
-# -----------------------------------------------------------------------------
-def handle_question(prompt: str):
-    # Add user message to history
-    st.session_state.messages.append({"role": "user", "content": prompt})
+    with st.chat_message(message["role"]):
+        st.markdown(message["content"])
+        
+        # Show sources for assistant messages if available
+        if message["role"] == "assistant" and message.get("sources"):
 
-    # Display user message
+            # Creates expander bar and allows user to view sources
+            with st.expander(f"View Sources ({len(message['sources'])} passages retrieved)"):
+                
+                # Loops over source number and content
+                for i, source in enumerate(message["sources"], 1):
+                    st.markdown(f"**Source {i}** (Similarity: {source['similarity']:.3f})")
+                    st.text_area(
+                        f"Passage {i}",
+                        source["text"],
+                        height=150,
+                        key=f"source_{id(message)}_{i}",
+                        label_visibility="collapsed"
+                    )
+                    st.divider()
+
+# -----------------------------------------------------------------------------
+# Chat Input and Response Generation
+# -----------------------------------------------------------------------------
+# st.chat_input returns None until user submits, then returns their text
+# The := (walrus operator) assigns AND checks in one line
+
+if prompt := st.chat_input("Ask a question about TOPIC..."):
+    
+    # TO DO: Add user message to history
+    st.session_state.messages.append({"role": "user", "content": prompt})
+    
+    # TO DO: Display user message
     with st.chat_message("user"):
         st.markdown(prompt)
-
+    
     # Generate and display assistant response
     with st.chat_message("assistant"):
         with st.spinner("Searching database and generating answer..."):
             try:
-                agent = RAGAgent(
-                    db=st.session_state.database,
-                    model_name=model_choice,  # from sidebar
-                    max_iter=max_iter         # from sidebar
-                )
-
+                # TO DO: Initialize Agent
+                agent = RAGAgent(db = st.session_state.database,
+                                 max_iter = max_iter,
+                                 model_name = model_choice)
+                
+                # Get answer
                 result = agent.ask(prompt)
                 response = result["answer"]
                 sources = result["sources"]
-
+                
                 st.markdown(response)
-
-                # Display sources in an expander
+                
+                # Display sources immediately
                 if sources:
                     with st.expander(f"📚 View Sources ({len(sources)} passages retrieved)"):
                         for i, source in enumerate(sources, 1):
@@ -180,14 +205,14 @@ def handle_question(prompt: str):
                             )
                             if i < len(sources):
                                 st.divider()
-
-                # Save assistant message with sources
+                
+                # Add to history with sources
                 st.session_state.messages.append({
                     "role": "assistant",
                     "content": response,
                     "sources": sources
                 })
-
+                
             except Exception as e:
                 error_msg = f"❌ Error: {str(e)}"
                 st.error(error_msg)
@@ -197,56 +222,18 @@ def handle_question(prompt: str):
                     "sources": []
                 })
 
-
-# -----------------------------------------------------------------------------
-# Display Chat History
-# -----------------------------------------------------------------------------
-for message in st.session_state.messages:
-    with st.chat_message(message["role"]):
-        st.markdown(message["content"])
-
-        # Show sources for assistant messages if available
-        if message["role"] == "assistant" and message.get("sources"):
-            with st.expander(f"View Sources ({len(message['sources'])} passages retrieved)"):
-                for i, source in enumerate(message["sources"], 1):
-                    st.markdown(f"**Source {i}** (Similarity: {source['similarity']:.3f})")
-                    st.text_area(
-                        f"Passage {i}",
-                        source["text"],
-                        height=150,
-                        key=f"source_{id(message)}_{i}",
-                        label_visibility="collapsed"
-                    )
-                    st.divider()
-
-# -----------------------------------------------------------------------------
-# Handle pending example question (outside any expander)
-# -----------------------------------------------------------------------------
-if "pending_example" in st.session_state:
-    example_prompt = st.session_state.pop("pending_example")
-    handle_question(example_prompt)
-    st.stop()  # prevent also showing chat_input on this run
-
-# -----------------------------------------------------------------------------
-# Chat Input
-# -----------------------------------------------------------------------------
-if prompt := st.chat_input("Ask a question about TOPIC..."):
-    handle_question(prompt)
-
-# -----------------------------------------------------------------------------
-# Example Questions
-# -----------------------------------------------------------------------------
+# TO DO: Example questions in an expander
 with st.expander("💡 Example Questions"):
     examples = [
-        "How did World War 1 start.",
-        "Which were the Axis and Allied powers?",
-        "Give me ideas for a paper on World War 1",
-        "Give me a template for a paper on World War 1",
-        "Give me some interesting facts about World War 1"
+        "How did World War 1 start?.",
+        "What where the allied and Axis Powers?",
+        "Give me an outline for a reaserch paper on World War 1?",
+        "Give me some facts about the war?",
+        "Was there really a ceasefire on christmas 1914?"
     ]
-
-    for i, example in enumerate(examples):
-        if st.button(example, key=f"example_{i}"):
-            # Save the example question to be processed OUTSIDE the expander
-            st.session_state.pending_example = example
+    
+    for example in examples:
+        if st.button(example, key=example):
+            # Simulate entering the question
+            st.session_state.messages.append({"role": "user", "content": example})
             st.rerun()
