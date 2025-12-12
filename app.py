@@ -26,109 +26,191 @@ st.markdown("""
 <style>
 
     /* ------------------------------ */
-    /* MAIN PAGE BACKGROUND + TEXT    */
+    /* GLOBAL APP BACKGROUND          */
     /* ------------------------------ */
     [data-testid="stAppViewContainer"] {
-        background: linear-gradient(135deg, #1e2530 0%, #0f172a 50%, #0a0f1a 100%);
-        color: #f3f4f6 !important;
+        /* Faded trench-map parchment */
+        background: radial-gradient(circle at top left, #f5edd8 0%, #e7ddc4 35%, #d7c9a8 60%, #c4b28a 100%);
+        color: #1f2933 !important;
     }
 
-    /* Make all default text light */
+    /* Slight paper texture illusion using overlay */
+    [data-testid="stAppViewContainer"]::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background-image:
+            radial-gradient(circle at 1px 1px, rgba(0,0,0,0.05) 1px, transparent 0);
+        background-size: 8px 8px;
+        opacity: 0.25;
+        z-index: -1;
+    }
+
+    /* Make default text dark and readable on parchment */
     html, body, [data-testid="stAppViewContainer"] * {
-        color: #f3f4f6 !important;
+        color: #1f2933;
+        font-family: "Georgia", "Times New Roman", serif;
     }
 
     /* ------------------------------ */
-    /* SIDEBAR                        */
+    /* SIDEBAR - LEATHER / FIELD DESK */
     /* ------------------------------ */
     [data-testid="stSidebar"] {
-        background-color: #111827 !important;
-        border-right: 1px solid #374151;
+        background: linear-gradient(180deg, #3b3427 0%, #2b251d 100%) !important;
+        border-right: 2px solid #5b4b33;
     }
 
     [data-testid="stSidebar"] * {
-        color: #e5e7eb !important;
+        color: #f5f5f4 !important;
+    }
+
+    /* Sidebar headers */
+    [data-testid="stSidebar"] h2, 
+    [data-testid="stSidebar"] h3 {
+        font-family: "Georgia", "Times New Roman", serif;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        font-size: 0.9rem;
+        color: #f0e7d5 !important;
     }
 
     /* ------------------------------ */
     /* TITLES                         */
     /* ------------------------------ */
-    h1, h2, h3 {
-        color: #f9fafb !important;
-        font-family: "Georgia", "Times New Roman", serif;
+    h1 {
+        color: #3b3222 !important;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        font-size: 2.1rem;
+        border-bottom: 2px solid #8b5a2b;
+        padding-bottom: 0.3rem;
+        margin-bottom: 0.5rem;
+    }
+
+    h2, h3 {
+        color: #4a3b25 !important;
     }
 
     /* ------------------------------ */
-    /* CHAT MESSAGES                  */
+    /* CHAT MESSAGES (MAP CARDS)      */
     /* ------------------------------ */
-    /* USER MESSAGE */
-    div[data-testid="stChatMessage"][data-testid*="user"] {
-        background: rgba(59, 130, 246, 0.15); /* gentle blue */
-        border-left: 4px solid #3b82f6;
+    /* Generic chat message container */
+    div[data-testid="stChatMessage"] {
         border-radius: 10px;
-        padding: 0.75rem;
+        padding: 0.75rem 0.9rem;
+        margin-bottom: 0.6rem;
+        border: 1px solid #b69d72;
+        background: rgba(248, 241, 220, 0.9);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.18);
     }
 
-    /* ASSISTANT MESSAGE */
-    div[data-testid="stChatMessage"][data-testid*="assistant"] {
-        background: rgba(31, 41, 55, 0.8); /* smoky dark gray */
-        border-left: 4px solid #6b7280;
-        border-radius: 10px;
-        padding: 0.75rem;
+    /* Try to differentiate user vs assistant a bit using order */
+    /* User: slightly greener card */
+    div[data-testid="stChatMessage"]:nth-of-type(odd) {
+        background: rgba(214, 204, 173, 0.98);
+        border-left: 4px solid #4f6b3b;
+    }
+
+    /* Assistant: more neutral parchment */
+    div[data-testid="stChatMessage"]:nth-of-type(even) {
+        background: rgba(247, 239, 217, 0.98);
+        border-left: 4px solid #8b5a2b;
     }
 
     /* ------------------------------ */
     /* EXPANDERS (Sources, Examples)  */
     /* ------------------------------ */
-    details > summary {
-        color: #e5e7eb !important;
-        font-weight: 600 !important;
-        padding: 6px !important;
+    details {
+        background-color: rgba(244, 235, 214, 0.95) !important;
+        border: 1px solid #b69d72 !important;
+        border-radius: 6px !important;
+        padding: 4px 6px !important;
+        margin-top: 0.4rem !important;
     }
 
-    details {
-        background-color: #1f2937 !important;
-        border: 1px solid #374151 !important;
-        border-radius: 6px !important;
-        padding: 4px !important;
+    details > summary {
+        color: #3b3222 !important;
+        font-weight: 600 !important;
+        font-size: 0.9rem !important;
     }
 
     /* ------------------------------ */
-    /* TEXT AREAS                     */
+    /* TEXT AREAS (source passages)   */
     /* ------------------------------ */
     textarea, .stTextArea textarea {
-        background-color: #0f172a !important;
-        color: #f3f4f6 !important;
-        border: 1px solid #374151 !important;
+        background-color: #f8f1dd !important;
+        color: #1f2933 !important;
+        border: 1px solid #b69d72 !important;
         border-radius: 6px !important;
+        font-family: "Courier New", monospace;
+        font-size: 0.85rem;
     }
 
     /* ------------------------------ */
-    /* BUTTONS                        */
+    /* BUTTONS - FIELD-ORDER LOOK     */
     /* ------------------------------ */
     button {
-        background-color: #374151 !important;
-        color: #e5e7eb !important;
-        border-radius: 8px !important;
-        border: none !important;
-        padding: 0.5rem 0.75rem !important;
+        background-color: #4a5b3b !important;      /* field green */
+        color: #f5f5f4 !important;
+        border-radius: 999px !important;
+        border: 1px solid #2f3a26 !important;
+        padding: 0.35rem 0.9rem !important;
+        font-weight: 500 !important;
+        font-size: 0.9rem !important;
+        text-transform: none !important;
     }
 
     button:hover {
-        background-color: #4b5563 !important;
-        color: white !important;
+        background-color: #5f7249 !important;
+        color: #ffffff !important;
+        border-color: #2f3a26 !important;
+    }
+
+    /* Example question buttons: make them look like stamped labels */
+    .stButton button {
+        box-shadow: 0 2px 0 rgba(0,0,0,0.25);
+    }
+
+    /* ------------------------------ */
+    /* INPUTS & SLIDERS               */
+    /* ------------------------------ */
+    .stTextInput > div > input,
+    .stNumberInput input {
+        background-color: #f8f1dd !important;
+        color: #1f2933 !important;
+        border-radius: 4px !important;
+        border: 1px solid #b69d72 !important;
+    }
+
+    .stSlider > div > div > div {
+        background-color: #8b5a2b !important; /* trench-brown slider track */
     }
 
     /* ------------------------------ */
     /* LINKS                          */
     /* ------------------------------ */
     a {
-        color: #93c5fd !important;
-        text-decoration: none !important;
+        color: #7b3f00 !important;  /* rust/brown */
+        text-decoration: underline dotted !important;
+    }
+
+    a:hover {
+        color: #a8550c !important;
+    }
+
+    /* ------------------------------ */
+    /* CHAT INPUT BOX                 */
+    /* ------------------------------ */
+    [data-baseweb="textarea"] textarea {
+        background-color: #f8f1dd !important;
+        border-radius: 8px !important;
+        border: 1px solid #b69d72 !important;
     }
 
 </style>
 """, unsafe_allow_html=True)
+
 
 
 
