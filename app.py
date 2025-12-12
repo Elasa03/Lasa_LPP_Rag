@@ -165,8 +165,64 @@ for message in st.session_state.messages:
 # -----------------------------------------------------------------------------
 # st.chat_input returns None until user submits, then returns their text
 # The := (walrus operator) assigns AND checks in one line
+def handle_question(prompt: str):
+    # Add user message to history
+    st.session_state.messages.append({"role": "user", "content": prompt})
+
+    # Display user message
+    with st.chat_message("user"):
+        st.markdown(prompt)
+
+    # Generate and display assistant response
+    with st.chat_message("assistant"):
+        with st.spinner("Searching database and generating answer..."):
+            try:
+                # IMPORTANT: use your fixed arguments here
+                agent = RAGAgent(
+                    db=st.session_state.database,
+                    model_name=model_choice,  # from sidebar
+                    max_iter=max_iter         # from sidebar
+                )
+
+                result = agent.ask(prompt)
+                response = result["answer"]
+                sources = result["sources"]
+
+                st.markdown(response)
+
+                if sources:
+                    with st.expander(f"📚 View Sources ({len(sources)} passages retrieved)"):
+                        for i, source in enumerate(sources, 1):
+                            st.markdown(f"**Source {i}** (Similarity: {source['similarity']:.3f})")
+                            st.text_area(
+                                f"Passage {i}",
+                                source["text"],
+                                height=150,
+                                key=f"source_new_{i}",
+                                label_visibility="collapsed"
+                            )
+                            if i < len(sources):
+                                st.divider()
+
+                # Save assistant message with sources
+                st.session_state.messages.append({
+                    "role": "assistant",
+                    "content": response,
+                    "sources": sources
+                })
+
+            except Exception as e:
+                error_msg = f"❌ Error: {str(e)}"
+                st.error(error_msg)
+                st.session_state.messages.append({
+                    "role": "assistant",
+                    "content": error_msg,
+                    "sources": []
+                })
+
 
 if prompt := st.chat_input("Ask a question about TOPIC..."):
+    handle_question(prompt)
     
     # TO DO: Add user message to history
     st.session_state.messages.append({"role": "user", "content": prompt})
@@ -225,15 +281,14 @@ if prompt := st.chat_input("Ask a question about TOPIC..."):
 # TO DO: Example questions in an expander
 with st.expander("💡 Example Questions"):
     examples = [
-        "How did World War 1 start?.",
-        "What where the allied and Axis Powers?",
-        "Give me an outline for a reaserch paper on World War 1?",
-        "Give me some facts about the war?",
-        "Was there really a ceasefire on christmas 1914?"
+        "Give me an outline of the Bible Project's video of the book of Chronicles.",
+        "What are the main themes in Chronicles?",
+        "How does Chronicles portray King David?",
+        "What is the structure of 1 Chronicles?",
+        "How does Chronicles differ from Kings?"
     ]
     
     for example in examples:
         if st.button(example, key=example):
-            # Simulate entering the question
-            st.session_state.messages.append({"role": "user", "content": example})
-            st.rerun()
+            handle_question(example)
+            st.stop()  # prevent double-processing on this run
