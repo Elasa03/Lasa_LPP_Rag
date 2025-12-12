@@ -299,16 +299,6 @@ with st.sidebar:
 st.title("🪖 World War 1 RAG Assistant")
 st.markdown("Ask questions about the TOPIC and get AI-powered answers based on curated content.")
 
-st.markdown("""
-<div style="text-align:center; padding:10px;">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2e/WWI_British_Army_insignia_%28simplified%29.png" 
-         width="110" style="margin-bottom: -10px;">
-    <h2 style="margin-top: -5px; font-family: 'Georgia'; color:#3b3222;">
-        Western Front Intelligence Assistant
-    </h2>
-</div>
-""", unsafe_allow_html=True)
-
 # -----------------------------------------------------------------------------
 # Database Connection
 # -----------------------------------------------------------------------------
