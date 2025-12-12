@@ -165,7 +165,7 @@ with st.sidebar:
 # -----------------------------------------------------------------------------
 # Main App Header
 # -----------------------------------------------------------------------------
-st.title("📖 World War 1 RAG Assistant")
+st.title("🪖 World War 1 RAG Assistant")
 st.markdown("Ask questions about the TOPIC and get AI-powered answers based on curated content.")
 
 # -----------------------------------------------------------------------------
