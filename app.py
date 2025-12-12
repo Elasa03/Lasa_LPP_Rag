@@ -95,9 +95,10 @@ with st.sidebar:
     # TO DO: Update for your project # Talk about your project
     st.markdown("""
     ### About
-    This RAG assistant answers questions about the book of Chronicles using:
-    - Bible Project video transcripts
-    - Biblical text from Chronicles
+    This RAG assistant answers questions about the First World War using:
+    - Historians World War 1 video transcripts
+    - Historical Documents
+    - Historians Analysis of the War
     - Semantic search with embeddings
     """)
 
