@@ -22,65 +22,114 @@ st.set_page_config(
     page_icon="📖",
     layout="wide"
 )
-# ---- Custom styling (WWI theme) ----
 st.markdown("""
-    <style>
-    /* Main page background */
-    .main {
-        background: radial-gradient(circle at top left, #3b4a5a 0, #111827 45%, #05070a 100%);
-        color: #f9fafb;
+<style>
+
+    /* ------------------------------ */
+    /* MAIN PAGE BACKGROUND + TEXT    */
+    /* ------------------------------ */
+    [data-testid="stAppViewContainer"] {
+        background: linear-gradient(135deg, #1e2530 0%, #0f172a 50%, #0a0f1a 100%);
+        color: #f3f4f6 !important;
     }
-    
-    /* Sidebar background */
-    section[data-testid="stSidebar"] {
-        background: #111827;
+
+    /* Make all default text light */
+    html, body, [data-testid="stAppViewContainer"] * {
+        color: #f3f4f6 !important;
+    }
+
+    /* ------------------------------ */
+    /* SIDEBAR                        */
+    /* ------------------------------ */
+    [data-testid="stSidebar"] {
+        background-color: #111827 !important;
         border-right: 1px solid #374151;
     }
 
-    /* Sidebar text */
-    section[data-testid="stSidebar"] * {
+    [data-testid="stSidebar"] * {
         color: #e5e7eb !important;
     }
 
-    /* App title */
+    /* ------------------------------ */
+    /* TITLES                         */
+    /* ------------------------------ */
     h1, h2, h3 {
-        color: #e5e7eb !important;
+        color: #f9fafb !important;
         font-family: "Georgia", "Times New Roman", serif;
     }
 
-    /* Chat messages: user & assistant containers */
-    div[data-testid="stChatMessage"] {
-        border-radius: 12px;
-        padding: 0.5rem 0.75rem;
-        margin-bottom: 0.6rem;
-        border: 1px solid #374151;
-        background-color: rgba(15, 23, 42, 0.8);
+    /* ------------------------------ */
+    /* CHAT MESSAGES                  */
+    /* ------------------------------ */
+    /* USER MESSAGE */
+    div[data-testid="stChatMessage"][data-testid*="user"] {
+        background: rgba(59, 130, 246, 0.15); /* gentle blue */
+        border-left: 4px solid #3b82f6;
+        border-radius: 10px;
+        padding: 0.75rem;
     }
 
-    /* Text areas in sources */
-    textarea {
-        background-color: #020617 !important;
+    /* ASSISTANT MESSAGE */
+    div[data-testid="stChatMessage"][data-testid*="assistant"] {
+        background: rgba(31, 41, 55, 0.8); /* smoky dark gray */
+        border-left: 4px solid #6b7280;
+        border-radius: 10px;
+        padding: 0.75rem;
+    }
+
+    /* ------------------------------ */
+    /* EXPANDERS (Sources, Examples)  */
+    /* ------------------------------ */
+    details > summary {
         color: #e5e7eb !important;
+        font-weight: 600 !important;
+        padding: 6px !important;
+    }
+
+    details {
+        background-color: #1f2937 !important;
+        border: 1px solid #374151 !important;
+        border-radius: 6px !important;
+        padding: 4px !important;
+    }
+
+    /* ------------------------------ */
+    /* TEXT AREAS                     */
+    /* ------------------------------ */
+    textarea, .stTextArea textarea {
+        background-color: #0f172a !important;
+        color: #f3f4f6 !important;
+        border: 1px solid #374151 !important;
         border-radius: 6px !important;
     }
 
-    /* Expander styling */
-    details > summary {
-        font-weight: 600;
+    /* ------------------------------ */
+    /* BUTTONS                        */
+    /* ------------------------------ */
+    button {
+        background-color: #374151 !important;
         color: #e5e7eb !important;
+        border-radius: 8px !important;
+        border: none !important;
+        padding: 0.5rem 0.75rem !important;
     }
 
-    /* Buttons */
-    button[kind="secondary"] {
-        border-radius: 999px !important;
+    button:hover {
+        background-color: #4b5563 !important;
+        color: white !important;
     }
 
-    /* Link color */
+    /* ------------------------------ */
+    /* LINKS                          */
+    /* ------------------------------ */
     a {
         color: #93c5fd !important;
+        text-decoration: none !important;
     }
-    </style>
+
+</style>
 """, unsafe_allow_html=True)
+
 
 
 # -----------------------------------------------------------------------------
