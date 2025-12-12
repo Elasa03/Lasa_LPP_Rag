@@ -141,6 +141,11 @@ os.environ["OPENAI_API_KEY"] = api_key
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
+# If an example question was clicked, handle it here (outside any expander)
+if "pending_example" in st.session_state:
+    example_prompt = st.session_state.pop("pending_example")
+    handle_question(example_prompt)
+    st.stop()  # stop so Streamlit doesn't also show chat_input on this run
         
         # Show sources for assistant messages if available
         if message["role"] == "assistant" and message.get("sources"):
@@ -288,7 +293,8 @@ with st.expander("💡 Example Questions"):
         "Give me some interesting facts of World War 1"
     ]
     
-    for example in examples:
-        if st.button(example, key=example):
-            handle_question(example)
-            st.stop()  # prevent double-processing on this run
+    for i, example in enumerate(examples):
+        if st.button(example, key=f"example_{i}"):
+            # Save the example question to be processed OUTSIDE the expander
+            st.session_state.pending_example = example
+            st.rerun()
