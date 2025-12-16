@@ -287,10 +287,10 @@ with st.sidebar:
     st.markdown("""
     ### About
     This RAG assistant answers questions about the First World War using:
-    - Historians World War 1 video transcripts
     - Historical Documents
-    - Historians Analysis of the War
-    - Semantic search with embeddings
+    - Historian's Analysis of the Great War
+    - Educational World War 1 video transcripts
+    - Education World War 1 WebPages and Blogs
     """)
 
 # -----------------------------------------------------------------------------
