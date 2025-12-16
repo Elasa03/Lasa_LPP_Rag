@@ -70,24 +70,21 @@ class RAGAgent:
         
 
         agent = Agent(
-    role="World War I research assistant",
-    goal=(
-        "Answer World War I questions using retrieved historical sources "
-        "with an emphasis on accuracy, context, and supporting student research."
-    ),
+    role='World War I research assistant',
+    goal=('Answer World War I questions using retrieved historical sources'
+        'with an emphasis on accuracy, context, and supporting student research.'),
     backstory=(
-        "You are a careful World War I research assistant with access to a curated collection "
-        "of historical documents, primary sources, and historian analyses. "
-        "World War I sources may contain differing interpretations or conflicting perspectives. "
-        "You must retrieve relevant passages, acknowledge uncertainty or disagreement when it exists, "
-        "and ground your answers in the provided sources rather than relying on general knowledge."
-    ),
+        'You are a careful World War I research assistant with access to a curated collection '
+        'of historical documents, primary sources, and historian analyses.'
+        'World War I sources may contain differing interpretations or conflicting perspectives.'
+        'You must retrieve relevant passages, acknowledge uncertainty or disagreement when it exists,'
+        'and ground your answers in the provided sources rather than relying on general knowledge.'),
     tools=[query_tool],
     llm=llm,
     verbose=True,              # Shows what the agent is doing
     allow_delegation=False,    # Does not create sub-agents
     max_iter=self.max_iter     # Limits iterations / tool-use loop
-)
+        )
 
         
         # TO DO: Create the task
