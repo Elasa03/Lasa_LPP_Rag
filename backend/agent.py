@@ -71,10 +71,13 @@ class RAGAgent:
 
         agent = Agent(
             role='World War I research assistant',
-            goal='Answer questions regarding World War 1',
-            backstory="You are a careful WWI research assistant with access to a searchable collection of World War I documents "
-            "You must first retrieve relevant passages using the provided tool, then write a clear answer grounded in those passages. "
-            "If the sources do not contain enough information, say so rather than guessing.",
+            goal='Answer World War I questions using retrieved historical sources with an emphasis on accuracy, context, and supporting student research',
+            backstory='You are a careful World War I research assistant with access to a curated collection '
+            'of historical documents, primary sources, and historian analyses.'
+            'World War I sources may contain differing interpretations or conflicting perspectives.'
+            'You must retrieve relevant passages, acknowledge uncertainty or disagreement when it exists,'
+            'and ground your answers in the provided sources rather than relying on general knowledge.'
+),
             tools=[query_tool],
             llm=llm,
             verbose=True, # Shows what the agent is doing
