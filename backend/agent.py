@@ -76,14 +76,12 @@ class RAGAgent:
             'of historical documents, primary sources, and historian analyses.'
             'World War I sources may contain differing interpretations or conflicting perspectives.'
             'You must retrieve relevant passages, acknowledge uncertainty or disagreement when it exists,'
-            'and ground your answers in the provided sources rather than relying on general knowledge.'
-),
+            'and ground your answers in the provided sources rather than relying on general knowledge.',
             tools=[query_tool],
             llm=llm,
             verbose=True, # Shows what the agent is doing
             allow_delegation=False, # Does not create sub-agents
-            max_iter=self.max_iter # Limits tool calls
-        )
+            max_iter=self.max_iter # Limits tool calls)
         
         # TO DO: Create the task
         task = Task(description = question,
