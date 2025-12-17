@@ -7,10 +7,7 @@ The app is built with a **RAG pipeline** so answers are based in articles and me
 ## Domain Overview & Problem Statement
 
 ### Domain
-World War I which is an extremely important confilict in world history:
-- It has dense historical context (alliances, diplomacy, military doctrine, social factors, economic factors),
-- conflicting interpretations (war guilt, inevitability, responsibility),
-- frequent student-facing needs (timelines, key actors, primary-source grounding, templates, introductions).
+I chose World War due to it being an extremely important confilict in world history. It has dense historical context(alliances, diplomacy, military doctrine, social factors, economic factors), conflicting interpretations, and students frequently need information on it.
 
 ### Problem Statement
 Students and researchers often get surface level summaries without evidence or sources. Students do not even know if the information that was given to them is really accurate. Additionally I feels there is a massive gap in the amount of modern information and tools regarding World War 1 compared to World War 2. Lastly, I felt that the interest in the First World War has really faded in the present day.
@@ -34,9 +31,8 @@ I managed to solve this problems above becuase I created an agent that generates
 **Primary Sources**
 - Blank Check Ultimatum
 - Official government statements, ultimatums, and treaties
-- Speeches and memoirs from political and military leaders
-- Contemporary newspaper articles
-  
+- Speeches and memoirs from historical figures
+ 
 Primary sources allow the agent to quote and reference original material that is 100% truthful since they are official documents.
 
 **Secondary Sources**
