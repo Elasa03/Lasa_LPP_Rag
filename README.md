@@ -20,7 +20,7 @@ Students and researchers often get:
 
 My project solves that by:
 1) retrieving relevant passages from a well reaserched library,  
-2) generating answers to prompts with **citations** ,  
+2) generating answers to prompts with **citations** 
 3) explicitly noting **uncertainty and conflicting perspectives** when they exist.
 
 ---
