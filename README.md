@@ -22,10 +22,10 @@ I managed to solve this problems above becuase I created an agent that generates
 ---
 
 ## Pipeline
-1. User question enters the Streamlit UI  
-2. Pipeline retrieves relevant chunks from the WWI corpus  
-3. An agent synthesizes a response grounded in retrieved text  
-4. UI shows the final answer + citations + sources
+1. Inside Streamlit user types question which enters the Streamlit UI.
+2. Pipeline retrieves relevant chunks from the DuckDB Worl War 1 database.
+3. An agent synthesizes a response based in retrieved text.  
+4. Streamlit displays the final answer + citations + sources
 
 ![Architecture Diagram](rag_agent_arch.png)
 
@@ -77,7 +77,8 @@ pip install -r requirements.txt
 
 3. **Setup Backend Database**
 backend/war_vector.duckdb
-After it outputs: Database connected: backend/war_vector.duckdb
+
+After it outputs: Database connected: backend/war_vector.duckdb you are on the right track.
 
 5. **Run Code to Start Streamlit Application**
 streamlit run app.py
