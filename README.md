@@ -69,7 +69,7 @@ This configuration ensures that the agent prioritizes the evidence from my datab
 ## Installation and Setup Instructions
 
 ### Prerequisites
-- Python 3.10 or higher
+- Updated Python Version
 - An API key for ChatGPT
 
 ### Setup Steps
