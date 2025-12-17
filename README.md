@@ -17,7 +17,7 @@ Students and researchers often get surface level summaries without evidence or s
 
 **Usefullness of Agent**
 
-My agent fixes the problems above becuase it generates relevant answers retrieving relevant passages from a well reaserched library of documents. The answers it generates come with citations that users can use to check the information or expand on the question by looking into the source. Lastly, it provides a modern way to explore World War 1 that can incentivize the interest in this important topic.
+I managed to solve this problems above becuase I created an agent that generates relevant answers retrieving relevant passages from a well reaserched library of documents. The answers it generates come with citations that users can use to check the information or expand on the question by looking into the source. Lastly, it provides a modern way to explore World War 1 that can incentivize the interest in this important topic.
 
 ---
 
@@ -58,7 +58,7 @@ To answer World War I questions using retrieved historical sources with an empha
 The agent is framed as a careful World War I research assistant with access to a collection of historical documents, primary sources, and historian analyses. World War I analysis contains differing interpretations and contested narratives.So I engeneered my agent to retrieve relevant passages, acknowledge uncertainty or disagreement when it exists and ground all the answers in the sources.
 
 ### Rationale
-This configuration ensures that the agent prioritizes the evidence from my database. This is what makes this agent really domain centered. It also stops the agent from inventing random information. I also want my agent to avoid oversimplified one liners to the question. Lastly, I want my agent to be useful for a highschool or college student wanting to use it for help on their reaserch papers on World War 1.
+These changes ensured that the agent prioritizes the evidence from my database. This is what makes this agent really domain centered which is a key purpose for this demo. It also stops the agent from inventing random information. I also want my agent to avoid oversimplified one liners to the question. Lastly, I want my agent to be useful for a highschool or college student wanting to use it for help on their reaserch papers on World War 1.
 
 ## Installation and Setup Instructions
 
