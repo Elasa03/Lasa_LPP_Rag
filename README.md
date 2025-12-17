@@ -32,6 +32,6 @@ My project solves that by:
 3. An **agent** synthesizes a response grounded in retrieved text  
 4. UI shows the final answer + citations + sources
 
-![Architecture Diagram](Screenshot 2025-12-16 at 20.56.45.png)
+![Architecture Diagram](rag_agent_arch.png)
 
 
