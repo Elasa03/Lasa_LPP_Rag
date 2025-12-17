@@ -8,7 +8,7 @@ The app is built with a **RAG pipeline** so answers are based in articles and me
 
 ### Domain
 World War I which is an extremely important confilict in world history:
-- I has dense historical context (alliances, diplomacy, military doctrine, social factors, economic factors),
+- It has dense historical context (alliances, diplomacy, military doctrine, social factors, economic factors),
 - conflicting interpretations (war guilt, inevitability, responsibility),
 - frequent student-facing needs (timelines, key actors, primary-source grounding, templates, introductions).
 
