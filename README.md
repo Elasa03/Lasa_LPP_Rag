@@ -58,7 +58,7 @@ To answer World War I questions using retrieved historical sources with an empha
 The agent is framed as a careful World War I research assistant with access to a collection of historical documents, primary sources, and historian analyses. World War I analysis contains differing interpretations and contested narratives.So I engeneered my agent to retrieve relevant passages, acknowledge uncertainty or disagreement when it exists and ground all the answers in the sources.
 
 ### Rationale
-This configuration ensures that the agent prioritizes the evidence from my database. This is what makes this agent really domain centered. It also stops the agent from inventing random information. I also want my agent to avoid oversimplified one liners to the question. Lastly, I want my agent to be useful for a highschool or college student wanting to use it for help on their reaserch paper on World War 1.
+This configuration ensures that the agent prioritizes the evidence from my database. This is what makes this agent really domain centered. It also stops the agent from inventing random information. I also want my agent to avoid oversimplified one liners to the question. Lastly, I want my agent to be useful for a highschool or college student wanting to use it for help on their reaserch papers on World War 1.
 
 ## Installation and Setup Instructions
 
