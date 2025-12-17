@@ -37,12 +37,12 @@ My agent fixes the problems above becuase it generates relevant answers retrievi
 - Speeches and memoirs from political and military leaders
 - Contemporary newspaper articles
   
-Primary sources allow the agent to quote and reference original material that is 100% truthful
+Primary sources allow the agent to quote and reference original material that is 100% truthful since they are official documents.
 
 **Secondary Sources**
 - Peer-reviewed historical articles
 - Academic books and chapters by major WWI historians
-- Education youtube videos
+- Educational youtube videos
 
 These Secondary sources provide context, interpretation, and debate, enabling the agent to explain why historians disagree on certain issues. 
 Example: Did the christmas truce really happened?
@@ -84,7 +84,7 @@ backend/war_vector.duckdb
 After it outputs: Database connected: backend/war_vector.duckdb
 
 5. **Run Code to Start Streamlit Application**
-streamlit runn app.py
+streamlit run app.py
 
 6. **Enter Your OpenAI(ChatGPT) API Key**
 Copy paste API key in the top left of app where it mentions it.
