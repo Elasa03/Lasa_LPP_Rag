@@ -55,13 +55,7 @@ The youtube videos provide context to the agent of how the war is discussed in t
 To answer World War I questions using retrieved historical sources with an emphasis on accuracy, context, and support for student research.
 
 ### Agent Backstory
-The agent is framed as a careful World War I research assistant with access to a curated collection of historical documents, primary sources, and historian analyses.  
-Because World War I scholarship contains differing interpretations and contested narratives. 
-
-My agent is instructed to:
-- retrieve relevant passages.
-- acknowledge uncertainty or disagreement when it exists.
-- ground all answers in retrieved sources rather than general knowledge.
+The agent is framed as a careful World War I research assistant with access to a collection of historical documents, primary sources, and historian analyses. World War I analysis contains differing interpretations and contested narratives.So I engeneered my agent to retrieve relevant passages, acknowledge uncertainty or disagreement when it exists and ground all the answers in the sources.
 
 ### Rationale
 This configuration ensures that the agent prioritizes the evidence from my database. This is what makes this agent really domain centered. It also stops the agent from inventing random information. I also want my agent to avoid oversimplified one liners to the question. Lastly, I want my agent to be useful for a highschool or college student wanting to use it for help on their reaserch paper on World War 1.
