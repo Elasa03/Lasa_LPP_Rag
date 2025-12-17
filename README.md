@@ -56,9 +56,11 @@ To answer World War I questions using retrieved historical sources with an empha
 
 ### Agent Backstory
 The agent is framed as a careful World War I research assistant with access to a curated collection of historical documents, primary sources, and historian analyses.  
-Because World War I scholarship contains differing interpretations and contested narratives, the agent is instructed to:
-- retrieve relevant passages,
-- acknowledge uncertainty or disagreement when it exists,
+Because World War I scholarship contains differing interpretations and contested narratives. 
+
+My agent is instructed to:
+- retrieve relevant passages.
+- acknowledge uncertainty or disagreement when it exists.
 - ground all answers in retrieved sources rather than general knowledge.
 
 ### Rationale
