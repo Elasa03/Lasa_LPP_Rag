@@ -15,15 +15,13 @@ World War I which is an extremely important confilict in world history:
 ### Problem Statement
 Students and researchers often get surface level summaries without evidence or sources. Students do not even know if the information that was given to them is really accurate. Additionally I feels there is a massive gap in the amount of modern information and tools regarding World War 1 compared to World War 2. Lastly, I felt that the interest in the First World War has really faded in the present day.
 
-My project solves this by:
-1) Creating relevant answers retrieving relevant passages from a well reaserched library.
-2) The answers come with a citation for that users can check the information or expand on the question by looking for the source. 
-3) Provides a modern way to explore World War 1 that can incentivize the interest in this important topic.
+**Usefullness of Agent**
+
+My agent fixes the problems above becuase it generates relevant answers retrieving relevant passages from a well reaserched library of documents. The answers it generates come with citations that users can use to check the information or expand on the question by looking into the source. Lastly, it provides a modern way to explore World War 1 that can incentivize the interest in this important topic.
 
 ---
 
 ## Pipeline
-
 1. User question enters the Streamlit UI  
 2. Pipeline retrieves relevant chunks from the WWI corpus  
 3. An agent synthesizes a response grounded in retrieved text  
@@ -46,9 +44,9 @@ Primary sources allow the agent to quote and reference original material that is
 - Academic books and chapters by major WWI historians
 - Education youtube videos
 
-This Secondary sources provide context, interpretation, and debate, enabling the agent to explain why historians disagree on certain issues. 
+These Secondary sources provide context, interpretation, and debate, enabling the agent to explain why historians disagree on certain issues. 
 Example: Did the christmas truce really happened?
-The youtube video provide context to the agent of how the war is discussed in the present for less experienced audiences.
+The youtube videos provide context to the agent of how the war is discussed in the present for less experienced audiences.
 
 ### Agent Role
 **World War I research assistant**
